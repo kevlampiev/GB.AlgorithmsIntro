@@ -3,3 +3,9 @@ obj/
 /packages/
 riderModule.iml
 /_ReSharper.Caches/
+/.vs/GeekbrainsAlgorithmsIntro/DesignTimeBuild
+/.vs/GeekbrainsAlgorithmsIntro/FileContentIndex
+/.vs/ProjectEvaluation
+*.json
+/.vs/Algorythms/v17
+/.vs/GeekbrainsAlgorithmsIntro/v17
