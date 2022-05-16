@@ -37,7 +37,7 @@ public class HomeWorkMenu
     {
         _menuIndex = 0;
         _menuList = new MenuItem[2];
-        _menuList[0] = new MenuItem { Description = "Урок 1", RunnerFunc = new LessonRunner(this.Lesson1) };
+        _menuList[0] = new MenuItem { Description = "Урок 1", RunnerFunc = new LessonRunner( LessonOne.Run ) };
         _menuList[1] = new MenuItem { Description = "Выход", RunnerFunc = new LessonRunner(this.Done) };
         Init();
     }
