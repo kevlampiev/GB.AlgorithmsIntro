@@ -89,12 +89,29 @@ public class HomeWorkMenu
 
     private void Repaint() 
     {
-        Console.Clear();
         Console.ResetColor();
+        Console.Clear();
         DisplayHeader();
         DisplayMenu();
     }
 
+
+    //Рисует все что надо по заданию урока
+    private void DisplayLesson(MenuItem lesson)    
+    {
+        Console.ResetColor();
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.BackgroundColor = ConsoleColor.DarkBlue;
+        Console.SetCursorPosition(0, 0);
+        Console.Write(lesson.Description);
+        Console.SetCursorPosition(0, 1);
+        Console.ResetColor();
+        lesson.RunnerFunc();
+        Console.Write("Нажмите любую клавишу для продолжения");
+        Console.ReadKey(true);
+        Repaint();
+    }
 
     private void SetMenuIndex(int value) 
     {
@@ -133,7 +150,7 @@ public class HomeWorkMenu
                     ++MenuIndex;
                     break;
                 case ConsoleKey.Enter:
-                    _menuList[MenuIndex].RunnerFunc();
+                    DisplayLesson(_menuList[MenuIndex]);
                     break;
                 default: 
                     Repaint(); 
@@ -149,7 +166,6 @@ public class HomeWorkMenu
 
     public void Lesson1() 
     {
-        Console.Clear();
         Console.WriteLine("Lorem");
         Console.ReadKey(true);
     }
