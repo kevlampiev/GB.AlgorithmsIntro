@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GeekbrainsAlgorithmsIntro
+﻿namespace GeekbrainsAlgorithmsIntro
 {
     public static class TaskOneDotThree
     {
@@ -25,17 +19,18 @@ namespace GeekbrainsAlgorithmsIntro
             return (FibonacciByRecursion(member - 1) + FibonacciByRecursion(member - 2));
         }
 
-        public static long FibonacciByCicle(int member) 
+        public static long FibonacciByCicle(int member)
         {
-            long prev = (member==0)?0:1;
+            long prev = (member == 0) ? 0 : 1;
             long beforePrev = 0;
             if (member < 0)
             {
                 throw new ArgumentOutOfRangeException("Номер члена последовательнсти должен быть больше 0");
             }
-            for (int i = 1; i < member; i++) {
+            for (int i = 1; i < member; i++)
+            {
                 prev += beforePrev;
-                beforePrev = prev - beforePrev;              
+                beforePrev = prev - beforePrev;
             }
             return prev;
         }

@@ -1,10 +1,10 @@
-namespace GeekbrainsAlgorithmsIntro;
+п»їnamespace GeekbrainsAlgorithmsIntro;
 
 
 public delegate void LessonRunner();
 
 /// <summary>
-/// Пункт меню с вызовом определенного урока или еще что 
+/// РЎС‚СЂСѓРєС‚СѓСЂР° РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РїСѓРЅРєС‚Р° РјРµРЅСЋ СЃ СѓСЂРѕРєРѕРј РёР»Рё РєРѕРјР°РЅРґРѕР№
 /// </summary>
 public struct MenuItem
 {
@@ -20,41 +20,41 @@ public struct MenuItem
 public class HomeWorkMenu
 {
 
-    private MenuItem[] _menuList; 
+    private MenuItem[] _menuList;
     private int _menuIndex;
 
-    //Смещение меню относительно верхнего левого угла экрана
+    //РЎРјРµС‰РµРЅРёРµ РјРµРЅСЋ РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ РІРµСЂС…РЅРµРіРѕ Р»РµРІРѕРіРѕ СѓРіР»Р° СЌРєСЂР°РЅР°
     private int _menuStartColumnPos = 3;
     private int _menuStartRowPos = 3;
 
-    //Режим работы программы. Если true - работает. Над названием надо поработать
+    //Р РµР¶РёРј СЂР°Р±РѕС‚С‹ РїСЂРѕРіСЂР°РјРјС‹. Р•СЃР»Рё true - СЂР°Р±РѕС‚Р°РµС‚. РќР°Рґ РЅР°Р·РІР°РЅРёРµРј РЅР°РґРѕ РїРѕСЂР°Р±РѕС‚Р°С‚СЊ
     private bool _goOn;
 
-    //Активный номер в пункте меню
-    public int MenuIndex {get=>_menuIndex; set { SetMenuIndex(value); } }
+    //РђРєС‚РёРІРЅС‹Р№ РЅРѕРјРµСЂ РІ РїСѓРЅРєС‚Рµ РјРµРЅСЋ
+    public int MenuIndex { get => _menuIndex; set { SetMenuIndex(value); } }
 
     public HomeWorkMenu()
     {
         _menuIndex = 0;
         _menuList = new MenuItem[2];
-        _menuList[0] = new MenuItem { Description = "Урок 1", RunnerFunc = new LessonRunner( LessonOne.Run ) };
-        _menuList[1] = new MenuItem { Description = "Выход", RunnerFunc = new LessonRunner(this.Done) };
+        _menuList[0] = new MenuItem { Description = "РЈСЂРѕРє 1", RunnerFunc = new LessonRunner(LessonOne.Run) };
+        _menuList[1] = new MenuItem { Description = "Р’С‹С…РѕРґ", RunnerFunc = new LessonRunner(this.Done) };
         Init();
     }
 
-    private void DisplayMenu() 
+    private void DisplayMenu()
     {
         Console.CursorVisible = false;
         Console.ForegroundColor = ConsoleColor.White;
         Console.SetCursorPosition(_menuStartColumnPos, _menuStartRowPos);
-        Console.Write("Выбор урока для отображения");
+        Console.Write("Р’С‹Р±РѕСЂ СѓСЂРѕРєР° РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ");
         Console.ForegroundColor = ConsoleColor.DarkGray;
-        Console.SetCursorPosition(_menuStartColumnPos, _menuStartRowPos+1);
-        Console.Write("Для премещения по пунктам используйте клавиши стрелок, для выбора - клавишу Enter ");
-        
+        Console.SetCursorPosition(_menuStartColumnPos, _menuStartRowPos + 1);
+        Console.Write("Р”Р»СЏ РїСЂРµРјРµС‰РµРЅРёСЏ РїРѕ РїСѓРЅРєС‚Р°Рј РёСЃРїРѕР»СЊР·СѓР№С‚Рµ РєР»Р°РІРёС€Рё СЃС‚СЂРµР»РѕРє, РґР»СЏ РІС‹Р±РѕСЂР° - РєР»Р°РІРёС€Сѓ Enter ");
 
 
-        for (int i = 0; i < _menuList.Length; i++) 
+
+        for (int i = 0; i < _menuList.Length; i++)
         {
             string textToDisplay;
             Console.ResetColor();
@@ -64,7 +64,7 @@ public class HomeWorkMenu
                 Console.ForegroundColor = ConsoleColor.Green;
                 textToDisplay = "-> " + _menuList[i].Description;
             }
-            else 
+            else
             {
                 Console.ForegroundColor = ConsoleColor.DarkGray;
                 textToDisplay = "   " + _menuList[i].Description;
@@ -74,20 +74,20 @@ public class HomeWorkMenu
         }
     }
 
-    private void DisplayHeader() 
+    private void DisplayHeader()
     {
         Console.ForegroundColor = ConsoleColor.Cyan;
         Console.SetCursorPosition(0, 0);
-        Console.Write("Домашнее задание по курсу Алгоритмы и структуры данных");      
+        Console.Write("Р”РѕРјР°С€РЅРµРµ Р·Р°РґР°РЅРёРµ РїРѕ РєСѓСЂСЃСѓ РђР»РіРѕСЂРёС‚РјС‹ Рё СЃС‚СЂСѓРєС‚СѓСЂС‹ РґР°РЅРЅС‹С…");
         Console.SetCursorPosition(0, 1);
         Console.ResetColor();
-        Console.Write("Выполнил Евлампиевв К.В.");
+        Console.Write("Р’С‹РїРѕР»РЅРёР» Р•РІР»Р°РјРїРёРµРІРІ Рљ.Р’.");
         Console.SetCursorPosition(0, 2);
         Console.Write("-------------------------------------------------------");
     }
 
 
-    private void Repaint() 
+    private void Repaint()
     {
         Console.ResetColor();
         Console.Clear();
@@ -96,8 +96,8 @@ public class HomeWorkMenu
     }
 
 
-    //Рисует все что надо по заданию урока
-    private void DisplayLesson(MenuItem lesson)    
+    //Р РёСЃСѓРµС‚ РІСЃРµ С‡С‚Рѕ РЅР°РґРѕ РїРѕ Р·Р°РґР°РЅРёСЋ СѓСЂРѕРєР°
+    private void DisplayLesson(MenuItem lesson)
     {
         Console.ResetColor();
         Console.Clear();
@@ -108,22 +108,22 @@ public class HomeWorkMenu
         Console.SetCursorPosition(0, 1);
         Console.ResetColor();
         lesson.RunnerFunc();
-        Console.Write("Нажмите любую клавишу для продолжения");
+        Console.Write("РќР°Р¶РјРёС‚Рµ Р»СЋР±СѓСЋ РєР»Р°РІРёС€Сѓ РґР»СЏ РїСЂРѕРґРѕР»Р¶РµРЅРёСЏ");
         Console.ReadKey(true);
         Repaint();
     }
 
-    private void SetMenuIndex(int value) 
+    private void SetMenuIndex(int value)
     {
         if (value < 0)
         {
             _menuIndex = _menuList.Length - 1;
         }
-        else if (value >= _menuList.Length) 
+        else if (value >= _menuList.Length)
         {
             _menuIndex = 0;
         }
-        else 
+        else
         {
             _menuIndex = value;
         }
@@ -139,21 +139,22 @@ public class HomeWorkMenu
     public void Run()
     {
         ConsoleKeyInfo keyInfo;
-        while (_goOn) 
+        while (_goOn)
         {
             keyInfo = Console.ReadKey(true);
-            switch (keyInfo.Key) {
+            switch (keyInfo.Key)
+            {
                 case ConsoleKey.UpArrow:
                     --MenuIndex;
                     break;
                 case ConsoleKey.DownArrow:
-                    ++MenuIndex;
+                    РєР°Рє++MenuIndex;
                     break;
                 case ConsoleKey.Enter:
                     DisplayLesson(_menuList[MenuIndex]);
                     break;
-                default: 
-                    Repaint(); 
+                default:
+                    Repaint();
                     break;
             }
         }
@@ -164,7 +165,7 @@ public class HomeWorkMenu
         _goOn = false;
     }
 
-    public void Lesson1() 
+    public void Lesson1()
     {
         Console.WriteLine("Lorem");
         Console.ReadKey(true);

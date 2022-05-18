@@ -1,31 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GeekbrainsAlgorithmsIntro
+﻿namespace GeekbrainsAlgorithmsIntro
 {
-    public static class OneDotOne {
+    public static class OneDotOne
+    {
 
         /// <summary>
         /// Проверка что число простое. Возвращает true если так
         /// </summary>
         /// <param name="number">число тира long</param>
-        public static bool CheckIsPrime(long number) 
+        public static bool CheckIsPrime(long number)
         {
             long d = 0;
             int i = 2;
 
-            while (i < number) 
+            while (i < number)
             {
                 if (number % i == 0)
                 {
                     // d++;  это как бы требуется по блок схеме, но что-то очень не хочется вычислять много лишних итераций
                     return false;
                 }
-                else 
-                {  
+                else
+                {
                     i++; //ну как бы тоже лишнее: если число уже разделилось скажем на 2 зачем провыерить, что делится на 4 ??
                 }
             }
@@ -36,7 +31,7 @@ namespace GeekbrainsAlgorithmsIntro
         // Основная функция с пользовательским вводом. Вроде как в задании надо сделать все в одной функции, в т.ч. ввод, но 
         // непонятно как такое тестировать (не знаю как генерировать пользовательсикй ввод, а перенаправлять потоки, наверное сосвем не стОит 
         // в такой задаче. Поэтому разбил все на разные методы
-        public static void TaskOneDotOne() 
+        public static void TaskOneDotOne()
         {
             Console.WriteLine("введите число number для проверки (простое они или нет): "); // В блок-схеме нет такого
             long number = long.Parse(Console.ReadLine());
@@ -44,7 +39,7 @@ namespace GeekbrainsAlgorithmsIntro
             {
                 Console.WriteLine("number простое");
             }
-            else 
+            else
             {
                 Console.WriteLine("number не простое");
             }
@@ -57,7 +52,7 @@ namespace GeekbrainsAlgorithmsIntro
         /// <param name="number">Тестовое число</param>
         /// <param name="expectPrime">Ожидаемый результат работы функции. True - просое число, false - нет</param>
         /// <returns></returns>
-        public static bool AssertPrime(long number, bool expectPrime) 
+        public static bool AssertPrime(long number, bool expectPrime)
         {
             return (CheckIsPrime(number) == expectPrime);
         }
@@ -65,7 +60,7 @@ namespace GeekbrainsAlgorithmsIntro
         /// <summary>
         /// подаем заведомые числа 
         /// </summary>
-        public static void TestCheckIsPrime() 
+        public static void TestCheckIsPrime()
         {
             long number1 = 2024;
             bool expectedResult1 = false;
