@@ -58,7 +58,7 @@
         }
 
         /// <summary>
-        /// подаем заведомые числа 
+        /// подаем заведомо простое и заведомо непростое число и ожидаемый результат выполнения функции
         /// </summary>
         public static void TestCheckIsPrime()
         {
@@ -67,7 +67,6 @@
 
             long number2 = 1009;
             bool expectedResult2 = true;
-
 
             Console.WriteLine($"Проверяем число {number1}, ожидем результат {expectedResult1} . Выполняется ли данное утвердение : {AssertPrime(number1, expectedResult1)} ");
             Console.WriteLine($"Проверяем число {number2}, ожидем результат {expectedResult2} . Выполняется ли данное утвердение : {AssertPrime(number2, expectedResult2)} ");

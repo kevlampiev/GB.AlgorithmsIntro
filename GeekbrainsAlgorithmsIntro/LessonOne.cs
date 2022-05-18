@@ -10,9 +10,6 @@
             Console.WriteLine();
             Console.WriteLine("Задача 3. Реализуйте функцию вычисления числа Фибоначчи ..... ");
             TaskOneDotThree.CalcFibonacciSquence();
-
-
-
         }
     }
 }
