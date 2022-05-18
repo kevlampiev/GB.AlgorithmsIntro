@@ -1,12 +1,9 @@
-﻿using System;
-
-namespace GeekbrainsAlgorithmsIntro; // Note: actual namespace depends on the project name.
-
+﻿namespace GeekbrainsAlgorithmsIntro; 
 internal class Program
 {
     static void Main(string[] args)
     {
-       HomeWorkMenu hw = new HomeWorkMenu();
+        HomeWorkMenu hw = new HomeWorkMenu();
         hw.Run();
     }
 }
