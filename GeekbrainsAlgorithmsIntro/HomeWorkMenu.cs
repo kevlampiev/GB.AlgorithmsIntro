@@ -143,7 +143,7 @@ public class HomeWorkMenu
                     --MenuIndex;
                     break;
                 case ConsoleKey.DownArrow:
-                    как++MenuIndex;
+                    ++MenuIndex;
                     break;
                 case ConsoleKey.Enter:
                     DisplayLesson(_menuList[MenuIndex]);

@@ -1,6 +1,6 @@
 ﻿namespace GeekbrainsAlgorithmsIntro
 {
-    public static class OneDotOne
+    public static class Lesson1Task1
     {
 
         /// <summary>

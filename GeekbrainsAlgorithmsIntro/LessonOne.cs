@@ -5,11 +5,11 @@
         public static void Run()
         {
             Console.WriteLine("Задача 1. Требуется реализовать на C# функцию согласно блок-схеме. Блок-схема описывает алгоритм проверки, простое число или нет.");
-            OneDotOne.TestCheckIsPrime();
+            Lesson1Task1.TestCheckIsPrime();
 
             Console.WriteLine();
             Console.WriteLine("Задача 3. Реализуйте функцию вычисления числа Фибоначчи ..... ");
-            TaskOneDotThree.CalcFibonacciSquence();
+            Lesson1Task3.CalcFibonacciSquence();
         }
     }
 }
