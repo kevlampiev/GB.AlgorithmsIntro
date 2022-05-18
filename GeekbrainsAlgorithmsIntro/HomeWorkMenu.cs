@@ -14,9 +14,6 @@ public struct MenuItem
 }
 
 
-
-
-
 public class HomeWorkMenu
 {
 
@@ -51,8 +48,6 @@ public class HomeWorkMenu
         Console.ForegroundColor = ConsoleColor.DarkGray;
         Console.SetCursorPosition(_menuStartColumnPos, _menuStartRowPos + 1);
         Console.Write("Для премещения по пунктам используйте клавиши стрелок, для выбора - клавишу Enter ");
-
-
 
         for (int i = 0; i < _menuList.Length; i++)
         {
@@ -160,10 +155,12 @@ public class HomeWorkMenu
         }
     }
 
+
     public void Done()
     {
         _goOn = false;
     }
+
 
     public void Lesson1()
     {
