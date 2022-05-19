@@ -20,7 +20,7 @@ namespace GeekbrainsAlgorithmsIntro
             Console.WriteLine();
 
             Console.WriteLine("б) Выбираем ноды с индексами 0, 3, 8");
-            Console.WriteLine(doubleList.GetNodeByIndex(0).Value +" "+ doubleList.GetNodeByIndex(3).Value + " " + doubleList.GetNodeByIndex(8).Value);
+            Console.WriteLine(doubleList.GetNodeByIndex(0).Value + " " + doubleList.GetNodeByIndex(3).Value + " " + doubleList.GetNodeByIndex(8).Value);
             Console.WriteLine();
 
             Console.WriteLine("в) вставляем ноды с полезно нагрузкой 333 после нодов с индексами 0 3 8");
@@ -34,7 +34,7 @@ namespace GeekbrainsAlgorithmsIntro
             Console.WriteLine();
 
             Console.WriteLine("г) вставляем ноды с полезно нагрузкой 111 после нодов с индексами 0 4 10, но другим способом");
-            doubleList.AddNodeAfterIndex(0,111);
+            doubleList.AddNodeAfterIndex(0, 111);
             doubleList.AddNodeAfterIndex(5, 111);
             doubleList.AddNodeAfterIndex(12, 111);
             Console.WriteLine(doubleList.ToString());
