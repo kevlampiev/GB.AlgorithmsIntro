@@ -33,9 +33,10 @@ public class HomeWorkMenu
     public HomeWorkMenu()
     {
         _menuIndex = 0;
-        _menuList = new MenuItem[2];
+        _menuList = new MenuItem[3];
         _menuList[0] = new MenuItem { Description = "Урок 1", RunnerFunc = new LessonRunner(LessonOne.Run) };
-        _menuList[1] = new MenuItem { Description = "Выход", RunnerFunc = new LessonRunner(this.Done) };
+        _menuList[1] = new MenuItem { Description = "Урок 2", RunnerFunc = new LessonRunner(LessonTwo.Run) };
+        _menuList[2] = new MenuItem { Description = "Выход", RunnerFunc = new LessonRunner(this.Done) };
         Init();
     }
 
