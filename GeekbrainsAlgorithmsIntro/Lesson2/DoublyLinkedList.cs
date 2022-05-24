@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GeekbrainsAlgorithmsIntro
+namespace GeekbrainsAlgorithmsIntro.Lesson2
 {
     public class DoublyLinkedList : ILinkedList
     {
@@ -29,14 +29,14 @@ namespace GeekbrainsAlgorithmsIntro
             _endNode = _startNode;
         }
 
-        public DoublyLinkedList() 
+        public DoublyLinkedList()
         {
             _startNode = null;
             _endNode = null;
         }
 
         //Вспомогательная функция для создания одинокого нода (вне списка)
-        private Node CreateSingleNode(int value) 
+        private Node CreateSingleNode(int value)
         {
             return new Node() { Value = value, NextNode = null, PrevNode = null };
         }
@@ -48,7 +48,7 @@ namespace GeekbrainsAlgorithmsIntro
         /// <param name="index">Номер Node'a. Нумерация от нуля</param>
         /// <returns></returns>
         /// <exception cref="ArgumentOutOfRangeException"> Исключение при отрицательном индексе или индексе большем чем количество элементов в списке</exception>
-        public Node GetNodeByIndex(int index) 
+        public Node GetNodeByIndex(int index)
         {
             if (index < 0)
             {
@@ -56,8 +56,8 @@ namespace GeekbrainsAlgorithmsIntro
             };
             int currentIndex = 0;
             Node currentNode = _startNode;
-            while (currentNode != null && currentIndex<index) 
-            { 
+            while (currentNode != null && currentIndex < index)
+            {
                 currentIndex++;
                 currentNode = currentNode.NextNode;
             }
@@ -83,7 +83,7 @@ namespace GeekbrainsAlgorithmsIntro
                 _endNode = _startNode;
             }
             else
-            { 
+            {
                 Node neoNode = CreateSingleNode(value);
                 neoNode.PrevNode = _endNode;
                 _endNode.NextNode = neoNode;
@@ -99,7 +99,7 @@ namespace GeekbrainsAlgorithmsIntro
         public void AddNodeAfter(Node node, int value)
         {
             Node newNode = CreateSingleNode(value);
-            
+
             newNode.PrevNode = node;
             newNode.NextNode = node.NextNode;
             //Может так случиться, что вставляем после _endMode, тогда объявляем нового короля
@@ -108,12 +108,12 @@ namespace GeekbrainsAlgorithmsIntro
                 node.NextNode = newNode;
                 _endNode = newNode;
             }
-            else 
+            else
             {
                 node.NextNode.PrevNode = newNode;
                 node.NextNode = newNode;
             }
-            
+
         }
 
 
@@ -124,7 +124,7 @@ namespace GeekbrainsAlgorithmsIntro
         /// <param name="value">Полезная нагрузка нового нода</param>
         public void AddNodeAfterIndex(int index, int value)
         {
-           Node node = GetNodeByIndex(index);
+            Node node = GetNodeByIndex(index);
             AddNodeAfter(node, value);
         }
 
@@ -138,8 +138,8 @@ namespace GeekbrainsAlgorithmsIntro
         {
             if (_startNode == null) return null;
             Node currentNode = _startNode;
-            while (currentNode != null) 
-            { 
+            while (currentNode != null)
+            {
                 if (currentNode.Value == searchValue) return currentNode;
                 currentNode = currentNode.NextNode;
             }
@@ -152,12 +152,12 @@ namespace GeekbrainsAlgorithmsIntro
         /// <returns>Кол-во элементов</returns>
         public int GetCount()
         {
-            
+
             if (_startNode == null) return 0;
 
             Node currentNode = _startNode;
             int count = 1;
-            while (currentNode.NextNode != null) 
+            while (currentNode.NextNode != null)
             {
                 count++;
                 currentNode = currentNode.NextNode;
@@ -182,15 +182,15 @@ namespace GeekbrainsAlgorithmsIntro
         /// <exception cref="ArgumentException"></exception>
         public void RemoveNode(Node node)
         {
-            if (node == null) 
+            if (node == null)
             {
                 throw new ArgumentException();
             }
-                        
+
             if (node.PrevNode != null) node.PrevNode.NextNode = node.NextNode;
-            
+
             if (node.NextNode != null) node.NextNode.PrevNode = node.PrevNode;
-            
+
             if (node == _startNode) _startNode = _startNode.NextNode;
 
             if (node == _endNode) _endNode = _endNode.PrevNode;
@@ -200,20 +200,20 @@ namespace GeekbrainsAlgorithmsIntro
 
         }
 
-       
-        override public string ToString() 
+
+        override public string ToString()
         {
             Node currentNode = _startNode;
             string resultString = "";
 
-            while (currentNode != null) 
+            while (currentNode != null)
             {
-                resultString += "["+currentNode.Value +"] -";
+                resultString += "[" + currentNode.Value + "] -";
                 currentNode = currentNode.NextNode;
             }
 
             return resultString;
         }
-       
+
     }
 }

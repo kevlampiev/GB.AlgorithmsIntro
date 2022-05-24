@@ -1,4 +1,7 @@
-﻿namespace GeekbrainsAlgorithmsIntro;
+﻿using GeekbrainsAlgorithmsIntro.Lesson1;
+using GeekbrainsAlgorithmsIntro.Lesson2;
+
+namespace GeekbrainsAlgorithmsIntro;
 
 
 public delegate void LessonRunner();

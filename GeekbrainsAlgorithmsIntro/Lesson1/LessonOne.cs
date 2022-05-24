@@ -1,4 +1,4 @@
-﻿namespace GeekbrainsAlgorithmsIntro
+﻿namespace GeekbrainsAlgorithmsIntro.Lesson1
 {
     public static class LessonOne
     {

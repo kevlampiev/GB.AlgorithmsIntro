@@ -1,4 +1,4 @@
-﻿namespace GeekbrainsAlgorithmsIntro
+﻿namespace GeekbrainsAlgorithmsIntro.Lesson1
 {
     public static class Lesson1Task1
     {
@@ -54,7 +54,7 @@
         /// <returns></returns>
         public static bool AssertPrime(long number, bool expectPrime)
         {
-            return (CheckIsPrime(number) == expectPrime);
+            return CheckIsPrime(number) == expectPrime;
         }
 
         /// <summary>

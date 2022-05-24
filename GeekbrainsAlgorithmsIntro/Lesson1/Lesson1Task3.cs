@@ -1,4 +1,4 @@
-﻿namespace GeekbrainsAlgorithmsIntro
+﻿namespace GeekbrainsAlgorithmsIntro.Lesson1
 {
     public static class Lesson1Task3
     {
@@ -16,12 +16,12 @@
             }
             if (member == 0) return 0;
             if (member == 1) return 1;
-            return (FibonacciByRecursion(member - 1) + FibonacciByRecursion(member - 2));
+            return FibonacciByRecursion(member - 1) + FibonacciByRecursion(member - 2);
         }
 
         public static long FibonacciByCicle(int member)
         {
-            long prev = (member == 0) ? 0 : 1;
+            long prev = member == 0 ? 0 : 1;
             long beforePrev = 0;
             if (member < 0)
             {
