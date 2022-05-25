@@ -62,13 +62,14 @@ public class LessonThree
     {
         PointStructDouble[] structArray = InitStructures(membersCount);
 
-        Stopwatch timer = Stopwatch();
+        Stopwatch timer = new Stopwatch();
         timer.Start();
         for (int i = 0; i < membersCount; i++)
         {
             for (int j = i+1; j < membersCount; j++)
             {
-                double distance = CalcDistance(structArray[i].X, structArray[i].Y, structArray[j].X, structArray[j].Y);
+                //double distance = CalcDistance(structArray[i].X, structArray[i].Y, structArray[j].X, structArray[j].Y);
+                double distance = Math.Pow(structArray[i].X - structArray[j].X, 2) + Math.Pow(structArray[i].Y - structArray[j].Y, 2);
             }
         }
         timer.Stop();
@@ -85,15 +86,17 @@ public class LessonThree
     /// <returns>время в миллисекундах</returns>
     public static long CalcClassDistances(int membersCount)
     {
-        PointClassDouble[] structArray = InitClasses(membersCount);
+        PointClassDouble[] classArray = InitClasses(membersCount);
 
-        Stopwatch timer = Stopwatch();
+        Stopwatch timer = new Stopwatch();
         timer.Start();
         for (int i = 0; i < membersCount; i++)
         {
             for (int j = i+1; j < membersCount; j++)
             {
-                double distance = CalcDistance(structArray[i].X, structArray[i].Y, structArray[j].X, structArray[j].Y);
+                //double distance = CalcDistance(structArray[i].X, structArray[i].Y, structArray[j].X, structArray[j].Y);
+                double distance = Math.Pow(classArray[i].X - classArray[j].X,2) + Math.Pow(classArray[i].Y - classArray[j].Y,2);
+
             }
         }
         timer.Stop();
@@ -105,13 +108,18 @@ public class LessonThree
     /// </summary>
     public static void Run()
     {
-        int membersCount = 0;
-        for (int i = 1; i < 5; i++)
+        int countIncrement = 10000;
+        Console.WriteLine("length of arrays | time elapsed (structures), ms | time elapsed(classes), ms | time ratio ");
+        Console.WriteLine("------------------------------------------------------------------------------------------");
+
+        for (int i = 1; i <= 20; i++)
         {
-            membersCount = 50000 * i;
-            long timeClasses = CalcClassDistances(membersCount);
-            long timeStructures = CalcStrunctureDistances(membersCount);
-            Console.WriteLine($"{membersCount:6} | {timeClasses} | {timeStructures} | {timeClasses/timeStructures}");
+            
+            long timeClasses = CalcClassDistances(countIncrement*i);
+            long timeStructures = CalcStrunctureDistances(countIncrement * i);
+            string outputStr =
+            string.Format(" {0:d6}          |                        {1:d6} |                    {2:d6} | {3:f6}", countIncrement * i, timeStructures, timeClasses, timeStructures / (float)timeClasses);
+            Console.WriteLine(outputStr);
         }
     }
 }
