@@ -13,15 +13,13 @@ public class LessonThree
     /// <returns>Массив классов точек</returns>
     public static PointClassDouble[] InitClasses(int membersCount)
     {
-        Random rnd = new Random();
-        PointClassDouble[] pointArray = new PointClassDouble[membersCount];
-        for (int i = 0; i < membersCount; i++)
-        {
+        var rnd = new Random();
+        var pointArray = new PointClassDouble[membersCount];
+        for (var i = 0; i < membersCount; i++)
             pointArray[i] = new PointClassDouble() { X = rnd.Next(-300, 300) / 3.0, Y = rnd.Next(-300, 300) / 3.0 };
-        }
         return pointArray;
     }
-    
+
     /// <summary>
     /// Инициализация масива структур
     /// </summary>
@@ -29,12 +27,10 @@ public class LessonThree
     /// <returns></returns>
     public static PointStructDouble[] InitStructures(int membersCount)
     {
-        Random rnd = new Random();
-        PointStructDouble[] pointArray = new PointStructDouble[membersCount];
-        for (int i = 0; i < membersCount; i++)
-        {
+        var rnd = new Random();
+        var pointArray = new PointStructDouble[membersCount];
+        for (var i = 0; i < membersCount; i++)
             pointArray[i] = new PointStructDouble() { X = rnd.Next(-300, 300) / 3.0, Y = rnd.Next(-300, 300) / 3.0 };
-        }
         return pointArray;
     }
 
@@ -48,8 +44,8 @@ public class LessonThree
     /// <returns>Дистанция между двумя точками</returns>
     public static double CalcDistance(double x1, double y1, double x2, double y2)
     {
-        double dX = x2 - x1;
-        double dY = y2 - y1; 
+        var dX = x2 - x1;
+        var dY = y2 - y1;
         return Math.Sqrt(dX * dX + dY * dY);
     }
 
@@ -60,25 +56,25 @@ public class LessonThree
     /// <returns>время в миллисекундах</returns>
     public static long CalcStrunctureDistances(int membersCount)
     {
-        PointStructDouble[] structArray = InitStructures(membersCount);
+        var structArray = InitStructures(membersCount);
 
-        Stopwatch timer = new Stopwatch();
+        var timer = new Stopwatch();
         timer.Start();
-        for (int i = 0; i < membersCount; i++)
+        for (var i = 0; i < membersCount; i++)
+        for (var j = i + 1; j < membersCount; j++)
         {
-            for (int j = i+1; j < membersCount; j++)
-            {
-                //double distance = CalcDistance(structArray[i].X, structArray[i].Y, structArray[j].X, structArray[j].Y);
-                double distance = Math.Pow(structArray[i].X - structArray[j].X, 2) + Math.Pow(structArray[i].Y - structArray[j].Y, 2);
-            }
+            //double distance = CalcDistance(structArray[i].X, structArray[i].Y, structArray[j].X, structArray[j].Y);
+            var distance = Math.Pow(structArray[i].X - structArray[j].X, 2) +
+                           Math.Pow(structArray[i].Y - structArray[j].Y, 2);
         }
+
         timer.Stop();
         return timer.ElapsedMilliseconds;
     }
-    
+
     //Вообще, получается функция - близнец и хочется просто передать ей в качестве агрумента некий массив (структур
     //или классов), а внутри преобразовать типы, но, боюсь, что это усложнит эксперимент и интерпретацию его результатов
-    
+
     /// <summary>
     /// Функция подсчета времени выполнения расчекта дистанций между точками заданными объектами.
     /// </summary>
@@ -86,39 +82,100 @@ public class LessonThree
     /// <returns>время в миллисекундах</returns>
     public static long CalcClassDistances(int membersCount)
     {
-        PointClassDouble[] classArray = InitClasses(membersCount);
+        var classArray = InitClasses(membersCount);
 
-        Stopwatch timer = new Stopwatch();
+        var timer = new Stopwatch();
         timer.Start();
-        for (int i = 0; i < membersCount; i++)
+        for (var i = 0; i < membersCount; i++)
+        for (var j = i + 1; j < membersCount; j++)
         {
-            for (int j = i+1; j < membersCount; j++)
-            {
-                //double distance = CalcDistance(structArray[i].X, structArray[i].Y, structArray[j].X, structArray[j].Y);
-                double distance = Math.Pow(classArray[i].X - classArray[j].X,2) + Math.Pow(classArray[i].Y - classArray[j].Y,2);
-
-            }
+            //double distance = CalcDistance(structArray[i].X, structArray[i].Y, structArray[j].X, structArray[j].Y);
+            var distance = Math.Pow(classArray[i].X - classArray[j].X, 2) +
+                           Math.Pow(classArray[i].Y - classArray[j].Y, 2);
         }
+
         timer.Stop();
         return timer.ElapsedMilliseconds;
     }
-    
+
+
+    /// <summary>
+    /// Функция делает много классов без использования массива и считает вхолостую расстоянгие между точками
+    /// </summary>
+    /// <param name="memberCount">количество действий  </param>
+    /// <returns>время выполнения в милисекундах</returns>
+    public static long MeasureTimeClases(int memberCount)
+    {
+        var sw = new Stopwatch();
+        var rnd = new Random();
+        sw.Start();
+        for (var i = 1; i <= memberCount; i++)
+        {
+            var startPoint = new PointClassDouble()
+                { X = rnd.Next(-300, 300) / 3.0, Y = rnd.Next(-300, 300) / 3.0 };
+            var endtPoint = new PointClassDouble()
+                { X = rnd.Next(-300, 300) / 3.0, Y = rnd.Next(-300, 300) / 3.0 };
+            var distance = CalcDistance(startPoint.X, startPoint.Y, endtPoint.X, endtPoint.Y);
+        }
+
+        sw.Stop();
+        return sw.ElapsedMilliseconds;
+    }
+
+
+    /// <summary>
+    /// Функция делает много структур без использования массива и считает вхолостую расстоянгие между точками
+    /// </summary>
+    /// <param name="memberCount">количество действий  </param>
+    /// <returns>время выполнения в милисекундах</returns>
+    public static long MeasureTimeStructures(int memberCount)
+    {
+        var sw = new Stopwatch();
+        var rnd = new Random();
+        sw.Start();
+        for (var i = 1; i <= memberCount; i++)
+        {
+            var startPoint = new PointStructDouble()
+                { X = rnd.Next(-300, 300) / 3.0, Y = rnd.Next(-300, 300) / 3.0 };
+            var endtPoint = new PointStructDouble()
+                { X = rnd.Next(-300, 300) / 3.0, Y = rnd.Next(-300, 300) / 3.0 };
+            var distance = CalcDistance(startPoint.X, startPoint.Y, endtPoint.X, endtPoint.Y);
+        }
+
+        sw.Stop();
+        return sw.ElapsedMilliseconds;
+    }
+
     /// <summary>
     /// Основная функция Урока 3
     /// </summary>
     public static void Run()
     {
-        int countIncrement = 10000;
+        var countIncrement = 10000;
+        Console.WriteLine("Вариант 1. Массив значений");
         Console.WriteLine("length of arrays | time elapsed (structures), ms | time elapsed(classes), ms | time ratio ");
         Console.WriteLine("------------------------------------------------------------------------------------------");
 
-        for (int i = 1; i <= 20; i++)
+        for (var i = 1; i <= 2; i++)
         {
-            
-            long timeClasses = CalcClassDistances(countIncrement*i);
-            long timeStructures = CalcStrunctureDistances(countIncrement * i);
-            string outputStr =
-            string.Format(" {0:d6}          |                        {1:d6} |                    {2:d6} | {3:f6}", countIncrement * i, timeStructures, timeClasses, timeStructures / (float)timeClasses);
+            var timeClasses = CalcClassDistances(countIncrement * i);
+            var timeStructures = CalcStrunctureDistances(countIncrement * i);
+            var outputStr =
+                string.Format(" {0:d6}          |                        {1:d6} |                    {2:d6} | {3:f6}",
+                    countIncrement * i, timeStructures, timeClasses, timeStructures / (float)timeClasses);
+            Console.WriteLine(outputStr);
+        }
+
+        Console.WriteLine("\nВариант 2. Без использования массивов");
+        Console.WriteLine("number of pairs  | time elapsed (structures), ms | time elapsed(classes), ms | time ratio ");
+        Console.WriteLine("------------------------------------------------------------------------------------------");
+        for (var i = 1; i <= 2; i++)
+        {
+            var timeClasses = MeasureTimeClases(100000 * i);
+            var timeStructures = MeasureTimeStructures(100000 * i);
+            var outputStr =
+                string.Format(" {0:d6}          |                        {1:d6} |                    {2:d6} | {3:f6}",
+                    100000 * i, timeStructures, timeClasses, timeStructures / (float)timeClasses);
             Console.WriteLine(outputStr);
         }
     }
