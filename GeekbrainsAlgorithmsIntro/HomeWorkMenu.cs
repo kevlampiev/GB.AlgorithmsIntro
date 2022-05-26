@@ -1,5 +1,6 @@
 ﻿using GeekbrainsAlgorithmsIntro.Lesson1;
 using GeekbrainsAlgorithmsIntro.Lesson2;
+using GeekbrainsAlgorithmsIntro.Lesson3;
 
 namespace GeekbrainsAlgorithmsIntro;
 
@@ -36,10 +37,11 @@ public class HomeWorkMenu
     public HomeWorkMenu()
     {
         _menuIndex = 0;
-        _menuList = new MenuItem[3];
+        _menuList = new MenuItem[4];
         _menuList[0] = new MenuItem { Description = "Урок 1", RunnerFunc = new LessonRunner(LessonOne.Run) };
         _menuList[1] = new MenuItem { Description = "Урок 2", RunnerFunc = new LessonRunner(LessonTwo.Run) };
-        _menuList[2] = new MenuItem { Description = "Выход", RunnerFunc = new LessonRunner(this.Done) };
+        _menuList[2] = new MenuItem { Description = "Урок 3", RunnerFunc = new LessonRunner(LessonThree.Run) };
+        _menuList[3] = new MenuItem { Description = "Выход", RunnerFunc = new LessonRunner(this.Done) };
         Init();
     }
 
