@@ -1,80 +1,70 @@
 namespace GeekbrainsAlgorithmsIntro.Lesson4;
 
-public class TreeInt:ITree
+public class TreeInt : ITree
 {
     private TreeNode<int> _root;
 
     //Сколько позиций отведем для отображения одного узла при печати
     public int _nodeTemplateWidth = 2;
 
-    
-    
+
     /// <summary>
     /// Количество символов на отображение данных node включая границы
     /// </summary>
-    public int NodeDataViewWidth
-    {
-        get => _nodeTemplateWidth + 2;
-    }
+    public int NodeDataViewWidth => _nodeTemplateWidth + 2;
 
     //определяем максимальную глубину дерева, идущего от узла node
-    private int GetLevelCount(TreeNode<int> node )
+    private int GetLevelCount(TreeNode<int> node)
     {
         if (node == null) return 0;
         if (node.Left == null && node.Right == null) return 1;
-        
-        int subLevelsLeft = (node.Left != null)? GetLevelCount(node.Left) : 0;
-        int subLevelsRight = (node.Right != null)? GetLevelCount(node.Right) : 0;
+
+        var subLevelsLeft = node.Left != null ? GetLevelCount(node.Left) : 0;
+        var subLevelsRight = node.Right != null ? GetLevelCount(node.Right) : 0;
 
         return Math.Max(subLevelsLeft, subLevelsRight) + 1;
     }
 
-   
 
     //Вспомогательная функция для формирования того, как будет выглядеть узел при отображении. Требует оптимизации
     private string FormNodeTemplate(TreeNode<int> node, int level)
     {
         // узел будет выглядеть так:  ┌ (левая оеонцовка) -- (стикер0-удлинитель) [00] (само изображение) -- ┐ (правая оконцовка)
-        string template = (node != null)?node.Data.ToString():"";
-        template = "[" + template.PadLeft(_nodeTemplateWidth, ' ') + "]"; 
-        
+        var template = node != null ? node.Data.ToString() : "";
+        template = "[" + template.PadLeft(_nodeTemplateWidth, ' ') + "]";
+
         //Для самого последнего ряда (листья) предусмотрим пробелы слева и справа, чтобы отделять листья визуально
-        int spaceForElement = (NodeDataViewWidth+2) * ((int)Math.Pow(2, LevelsCount - level));
+        var spaceForElement = (NodeDataViewWidth + 2) * (int)Math.Pow(2, LevelsCount - level);
 
-        int stickerLength = Math.Max((spaceForElement/2 - NodeDataViewWidth - 2)/2, 0);
-        string sticker = "".PadLeft(stickerLength, '─');
+        var stickerLength = Math.Max((spaceForElement / 2 - NodeDataViewWidth - 2) / 2, 0);
+        var sticker = "".PadLeft(stickerLength, '─');
 
-        int marginLength = (spaceForElement - NodeDataViewWidth - 2 - stickerLength*2 + 1) / 2;
-        string margin = "".PadLeft(marginLength, ' ');
+        var marginLength = (spaceForElement - NodeDataViewWidth - 2 - stickerLength * 2 + 1) / 2;
+        var margin = "".PadLeft(marginLength, ' ');
 
-        string letfEdging = (level != LevelsCount) ? "┌" : "";
-        string rightEdging = (level != LevelsCount) ? "┐" : "";
+        var letfEdging = level != LevelsCount ? "┌" : "";
+        var rightEdging = level != LevelsCount ? "┐" : "";
 
         if (level == LevelsCount)
-        {
-            template = " "+template +" "; //особый случай - последний ряд, иначе очень много место занимает дерево
-        } 
-        else 
-        {
-            template= margin+letfEdging+sticker+template+sticker+rightEdging+margin;
-        }
+            template = " " + template + " "; //особый случай - последний ряд, иначе очень много место занимает дерево
+        else
+            template = margin + letfEdging + sticker + template + sticker + rightEdging + margin;
         return template.PadRight(spaceForElement, ' ');
-        
     }
 
-    
+
     public TreeNode<int> Root
     {
-        get => GetRoot();  //Ну, как бы да.... но по интерфейсу надо реализовать GetRoot, не выбрасывать же ...
-        set { _root = value;  }
+        get => GetRoot(); //Ну, как бы да.... но по интерфейсу надо реализовать GetRoot, не выбрасывать же ...
+        set => _root = value;
     }
-    
+
     /// <summary>
     /// Максимальное количество уровней, начиная с корня
     /// </summary>
-    public int LevelsCount { get=>GetLevelCount(GetRoot());  }
+    public int LevelsCount => GetLevelCount(GetRoot());
 
-      
+
     /// <summary>
     /// Функция отрисовки декрева
     /// </summary>
@@ -87,21 +77,20 @@ public class TreeInt:ITree
             nodeArray = new TreeNode<int>[1];
             nodeArray[0] = GetRoot();
         }
-        for (int i = 0; i < nodeArray.Length; i++)
-        {
-            Console.Write(FormNodeTemplate(nodeArray[i], level));
-        }
+
+        for (var i = 0; i < nodeArray.Length; i++) Console.Write(FormNodeTemplate(nodeArray[i], level));
         Console.WriteLine();
 
-        if (level < LevelsCount) 
+        if (level < LevelsCount)
         {
-            TreeNode<int>[] newNodeArray = new TreeNode<int>[2*nodeArray.Length];
-            for (int j = 0; j < nodeArray.Length; j++)
+            var newNodeArray = new TreeNode<int>[2 * nodeArray.Length];
+            for (var j = 0; j < nodeArray.Length; j++)
             {
-                newNodeArray[2 * j] = nodeArray[j].Left;
-                newNodeArray[(2 * j) + 1] = nodeArray[j].Right;
+                newNodeArray[2 * j] = nodeArray[j] != null ? nodeArray[j].Left : null;
+                newNodeArray[2 * j + 1] = nodeArray[j] != null ? nodeArray[j].Right : null;
             }
-            DrawTree(newNodeArray, level+1);
+
+            DrawTree(newNodeArray, level + 1);
         }
     }
 
@@ -117,16 +106,12 @@ public class TreeInt:ITree
     public void AddItem(int value)
     {
         if (Root == null)
-        {
-            _root = new TreeNode<int>() { Data = value };
-        }
+            _root = new TreeNode<int>() { Data = value, Right = null, Left = null };
         else
-        {
             SearchAndAdd(Root, value);
-        }
     }
 
-    
+
     /// <summary>
     /// Добавляет значение в оптимальное место в дереве
     /// </summary>
@@ -135,38 +120,32 @@ public class TreeInt:ITree
     private void SearchAndAdd(TreeNode<int> node, int value)
     {
         if (node.Data == value) return; //такой узел уже существует, неинтересно
+
+        if (node == null) node = new TreeNode<int>() { Data = value };
         if (node.Data > value) //Надо как-то подставить слева
         {
             if (node.Left == null)
-            {
-                node.Left = new TreeNode<int>() { Data = value };
-            }
+                node.Left = new TreeNode<int>() { Data = value, Right = null, Left = null };
             else
-            {
                 SearchAndAdd(node.Left, value);
-            }
         }
         else if (node.Data < value)
         {
             //случай, когда значение в узде меньше подставляемого - надо как-то подставить справа
             if (node.Right == null)
-            {
-                node.Right = new TreeNode<int>() { Data = value };
-            }
+                node.Right = new TreeNode<int>() { Data = value, Right = null, Left = null };
             else
-            {
                 SearchAndAdd(node.Right, value);
-            }
         }
     }
 
     public void RemoveItem(int value)
     {
         //неправильная реализация. Отключает всю ветку безвинных node. TODO Переделать 
-        TreeNode<int> nodeToRemove = GetNodeByValue(value);
+        var nodeToRemove = GetNodeByValue(value);
         if (nodeToRemove != null)
         {
-            TreeNode<int> parent = GetParent(nodeToRemove, Root);
+            var parent = GetParent(nodeToRemove, Root);
             if (parent.Left == nodeToRemove) parent.Left = null;
             if (parent.Right == nodeToRemove) parent.Right = null;
         }
@@ -181,7 +160,7 @@ public class TreeInt:ITree
     private TreeNode<int> SearchNodeByValue(int value, TreeNode<int> node)
     {
         TreeNode<int> result = null;
-        
+
         if (node.Data == value) return node;
         if (node.Left != null)
         {
@@ -196,7 +175,6 @@ public class TreeInt:ITree
         }
 
         return null;
-
     }
 
     /// <summary>
@@ -204,7 +182,7 @@ public class TreeInt:ITree
     /// </summary>
     /// <param name="node">Узел, родителя которого мы ищем </param>
     /// <returns>ссылка на родительский узел </returns>
-    private TreeNode<int> GetParent(TreeNode<int> node, TreeNode<int> parent  )
+    private TreeNode<int> GetParent(TreeNode<int> node, TreeNode<int> parent)
     {
         TreeNode<int> result = null;
         if (parent == null) return null;
@@ -213,7 +191,7 @@ public class TreeInt:ITree
         if (result != null) return result;
         result = GetParent(node, parent.Right);
         if (result != null) return result;
-        
+
         return result;
     }
 
