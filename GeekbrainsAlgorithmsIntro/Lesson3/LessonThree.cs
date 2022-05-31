@@ -4,14 +4,17 @@ using System;
 
 namespace GeekbrainsAlgorithmsIntro.Lesson3;
 
-public class LessonThree
+public class LessonThree:ILesson
 {
+    public int LessonNumber { get; set; }
+    public string Descriptopn { get; set; }
+    
     /// <summary>
     /// Инициализация массива классов
     /// </summary>
     /// <param name="membersCount">Количество элементов массива</param>
     /// <returns>Массив классов точек</returns>
-    public static PointClassDouble[] InitClasses(int membersCount)
+    public PointClassDouble[] InitClasses(int membersCount)
     {
         var rnd = new Random();
         var pointArray = new PointClassDouble[membersCount];
@@ -25,7 +28,7 @@ public class LessonThree
     /// </summary>
     /// <param name="membersCount">Количество элементов массива</param>
     /// <returns></returns>
-    public static PointStructDouble[] InitStructures(int membersCount)
+    public PointStructDouble[] InitStructures(int membersCount)
     {
         var rnd = new Random();
         var pointArray = new PointStructDouble[membersCount];
@@ -42,7 +45,7 @@ public class LessonThree
     /// <param name="x2">Координата x второй точки</param>
     /// <param name="y2">Координата y второй точки</param>
     /// <returns>Дистанция между двумя точками</returns>
-    public static double CalcDistance(double x1, double y1, double x2, double y2)
+    public double CalcDistance(double x1, double y1, double x2, double y2)
     {
         var dX = x2 - x1;
         var dY = y2 - y1;
@@ -54,7 +57,7 @@ public class LessonThree
     /// </summary>
     /// <param name="membersCount">количество элементов</param>
     /// <returns>время в миллисекундах</returns>
-    public static long CalcStrunctureDistances(int membersCount)
+    public long CalcStrunctureDistances(int membersCount)
     {
         var structArray = InitStructures(membersCount);
 
@@ -80,7 +83,7 @@ public class LessonThree
     /// </summary>
     /// <param name="membersCount">количество элементов</param>
     /// <returns>время в миллисекундах</returns>
-    public static long CalcClassDistances(int membersCount)
+    public long CalcClassDistances(int membersCount)
     {
         var classArray = InitClasses(membersCount);
 
@@ -104,7 +107,7 @@ public class LessonThree
     /// </summary>
     /// <param name="memberCount">количество действий  </param>
     /// <returns>время выполнения в милисекундах</returns>
-    public static long MeasureTimeClases(int memberCount)
+    public long MeasureTimeClases(int memberCount)
     {
         var sw = new Stopwatch();
         var rnd = new Random();
@@ -128,7 +131,7 @@ public class LessonThree
     /// </summary>
     /// <param name="memberCount">количество действий  </param>
     /// <returns>время выполнения в милисекундах</returns>
-    public static long MeasureTimeStructures(int memberCount)
+    public long MeasureTimeStructures(int memberCount)
     {
         var sw = new Stopwatch();
         var rnd = new Random();
@@ -149,7 +152,7 @@ public class LessonThree
     /// <summary>
     /// Основная функция Урока 3
     /// </summary>
-    public static void Run()
+    public void Run()
     {
         var countIncrement = 10000;
         Console.WriteLine("Вариант 1. Массив значений");

@@ -3,9 +3,13 @@ using System.Text;
 
 namespace GeekbrainsAlgorithmsIntro.Lesson4;
 
-public class LessonFour
+public class LessonFour:ILesson
 {
-    public static void DisplayStep(string description)
+    
+    public int LessonNumber { get; set; }
+    public string Descriptopn { get; set; }
+    
+    public void DisplayStep(string description)
     {
         Console.WriteLine();
         Console.WriteLine(description);
@@ -15,7 +19,7 @@ public class LessonFour
     /// Генерит что-то
     /// </summary>
     /// <returns>строка случайных символов</returns>
-    public static string RandomString()
+    public string RandomString()
     {
         var random = new Random();
 
@@ -32,7 +36,7 @@ public class LessonFour
     /// <summary>
     /// Функция по задаче 2 (Сравнение массива и Hashset)
     /// </summary>
-    public static void TryHash()
+    public void TryHash()
     {
         var iterations = 100000;
         var strArray = new string[iterations];
@@ -75,7 +79,7 @@ public class LessonFour
     /// <summary>
     /// Функция по задаче 1 (работа с деревьями)
     /// </summary>
-    public static void BTrees()
+    public void BTrees()
     {
         DisplayStep("a) Создаем простое дерево из 3-х элеменов");
         var tree = new TreeInt();
@@ -102,11 +106,13 @@ public class LessonFour
     }
 
 
-    public static void Run()
+    public void Run()
     {
         DisplayStep("Задание 1. Работа с деревьями");
         BTrees();
         DisplayStep("Задание 2. Работа с HashSet");
         TryHash();
     }
+
+
 }

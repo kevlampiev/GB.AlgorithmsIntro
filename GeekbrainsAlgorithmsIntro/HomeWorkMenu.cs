@@ -22,7 +22,7 @@ public struct MenuItem
 public class HomeWorkMenu
 {
 
-    private MenuItem[] _menuList;
+    private List<ILesson> _menuList;
     private int _menuIndex;
 
     //Смещение меню относительно верхнего левого угла экрана
@@ -38,12 +38,11 @@ public class HomeWorkMenu
     public HomeWorkMenu()
     {
         _menuIndex = 0;
-        _menuList = new MenuItem[5];
-        _menuList[0] = new MenuItem { Description = "Урок 1", RunnerFunc = new LessonRunner(LessonOne.Run) };
-        _menuList[1] = new MenuItem { Description = "Урок 2", RunnerFunc = new LessonRunner(LessonTwo.Run) };
-        _menuList[2] = new MenuItem { Description = "Урок 3", RunnerFunc = new LessonRunner(LessonThree.Run) };
-        _menuList[3] = new MenuItem { Description = "Урок 4", RunnerFunc = new LessonRunner(LessonFour.Run) };
-        _menuList[4] = new MenuItem { Description = "Выход", RunnerFunc = new LessonRunner(this.Done) };
+        _menuList = new List<ILesson>();
+        _menuList.Add(new LessonOne(){LessonNumber =1, Descriptopn = "По уроку 1"});
+        _menuList.Add(new LessonTwo(){LessonNumber =2, Descriptopn = "По уроку 2"});
+        _menuList.Add(new LessonThree(){LessonNumber =3, Descriptopn = "По уроку 3"});
+        _menuList.Add(new LessonFour(){LessonNumber =4, Descriptopn = "По уроку 4"});
         Init();
     }
 
@@ -55,9 +54,9 @@ public class HomeWorkMenu
         Console.Write("Выбор урока для отображения");
         Console.ForegroundColor = ConsoleColor.DarkGray;
         Console.SetCursorPosition(_menuStartColumnPos, _menuStartRowPos + 1);
-        Console.Write("Для премещения по пунктам используйте клавиши стрелок, для выбора - клавишу Enter ");
+        Console.Write("Для премещения по пунктам используйте клавиши стрелок, для выбора - клавишу Enter, для выхода -Q ");
 
-        for (int i = 0; i < _menuList.Length; i++)
+        for (int i = 0; i < _menuList.Count; i++)
         {
             string textToDisplay;
             Console.ResetColor();
@@ -65,12 +64,12 @@ public class HomeWorkMenu
             if (i == _menuIndex)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
-                textToDisplay = "-> " + _menuList[i].Description;
+                textToDisplay = "-> " + "Урок № "+_menuList[i].LessonNumber;
             }
             else
             {
                 Console.ForegroundColor = ConsoleColor.DarkGray;
-                textToDisplay = "   " + _menuList[i].Description;
+                textToDisplay = "   " + "Урок № "+_menuList[i].LessonNumber;
             }
 
             Console.Write(textToDisplay);
@@ -100,17 +99,17 @@ public class HomeWorkMenu
 
 
     //Рисует все что надо по заданию урока
-    private void DisplayLesson(MenuItem lesson)
+    private void DisplayLesson(ILesson lesson)
     {
         Console.ResetColor();
         Console.Clear();
         Console.ForegroundColor = ConsoleColor.White;
         Console.BackgroundColor = ConsoleColor.DarkBlue;
         Console.SetCursorPosition(0, 0);
-        Console.Write(lesson.Description);
+        Console.Write(lesson.Descriptopn);
         Console.SetCursorPosition(0, 1);
         Console.ResetColor();
-        lesson.RunnerFunc();
+        lesson.Run();
         Console.Write("Нажмите любую клавишу для продолжения");
         Console.ReadKey(true);
         Repaint();
@@ -120,9 +119,9 @@ public class HomeWorkMenu
     {
         if (value < 0)
         {
-            _menuIndex = _menuList.Length - 1;
+            _menuIndex = _menuList.Count - 1;
         }
-        else if (value >= _menuList.Length)
+        else if (value >= _menuList.Count)
         {
             _menuIndex = 0;
         }
@@ -153,6 +152,9 @@ public class HomeWorkMenu
                 case ConsoleKey.DownArrow:
                     ++MenuIndex;
                     break;
+                case ConsoleKey.Q: 
+                    _goOn = false;
+                    break;
                 case ConsoleKey.Enter:
                     DisplayLesson(_menuList[MenuIndex]);
                     break;
@@ -163,16 +165,4 @@ public class HomeWorkMenu
         }
     }
 
-
-    public void Done()
-    {
-        _goOn = false;
-    }
-
-
-    public void Lesson1()
-    {
-        Console.WriteLine("Lorem");
-        Console.ReadKey(true);
-    }
 }
