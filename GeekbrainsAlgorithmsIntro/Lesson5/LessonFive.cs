@@ -31,7 +31,8 @@ public class LessonFive:ILesson
         
         Queue<TreeNode<int>> queue = new Queue<TreeNode<int>>();
         TreeNode<int> node = _tree.GetRoot();
-
+        queue.Enqueue(node);
+        
         while (node.Data != value && queue.Count > 0)
         {
             if (node.Left != null) queue.Enqueue(node.Left);
@@ -39,17 +40,24 @@ public class LessonFive:ILesson
             node = queue.Dequeue();
             
         }
-        return (node.Data == value? node: null);
+
+        if (queue.Count == 0) return null;
+        else return node;
     }
 
 
-
+    /// <summary>
+    /// Поиск в глубину элемента с позезной нагрузкой value
+    /// </summary>
+    /// <param name="value">изкомое значение полезной нагрузки</param>
+    /// <returns>адрес элемента</returns>
     private TreeNode<int> DFSearch(int value)
     {
         if (_tree.GetRoot() == null) return null;
         
         Stack<TreeNode<int>> stack = new Stack<TreeNode<int>>();
         TreeNode<int> node = _tree.GetRoot();
+        stack.Push(node);
 
         while (node.Data != value && stack.Count > 0)
         {
@@ -59,22 +67,53 @@ public class LessonFive:ILesson
             
         }
         return (node.Data == value? node: null);
-        
-        
     }
 
+    
+    //Вообще вспомогательная функция
+    private int GetValueFromTree(out bool found)
+    {
+        TreeNode<int> node = _tree.GetRoot();
+        if (node == null)
+        {
+            found = false;
+            return -1;
+        }
 
+        while (node.Right != null)
+        {
+            node = node.Right;
+        }
+
+        found = true;
+        return node.Data;
+    }
+    
     public void Run()
     {
         Random rnd = new Random();
         Init();
         _tree.PrintTree();
         int searchValue = rnd.Next(99);
+        bool found;
+        int realValue = GetValueFromTree(out found);
 
+        Console.WriteLine("Поиск в ширину.");
         TreeNode<int> node = BFSearch(searchValue);
-        Console.WriteLine($"Поиск в ширину. Значение {searchValue} {(node == null?"не":"" )} найдено в дереве");
+        Console.WriteLine($"Значение {searchValue} {((node == null)?"не":"" )} найдено в дереве");
+        if (found) 
+        {
+            node = BFSearch(realValue);
+            Console.WriteLine($"Значение {realValue} {((node == null)?"не":"" )} найдено в дереве");
+        }
 
+        Console.WriteLine("Поиск в глубину.");
         node = DFSearch(searchValue);
-        Console.WriteLine($"Поиск в шлубину. Значение {searchValue} {(node == null?"не":"" )} найдено в дереве");
+        Console.WriteLine($"Значение {searchValue} {((node == null)?"не":"" )} найдено в дереве");
+        if (found)
+        {
+            node = DFSearch(realValue);
+            Console.WriteLine($"Значение {realValue} {((node == null) ? "не" : "")} найдено в дереве");
+        }
     }
 }
