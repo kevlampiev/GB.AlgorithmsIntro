@@ -2,22 +2,21 @@ using GeekbrainsAlgorithmsIntro.Lesson4;
 
 namespace GeekbrainsAlgorithmsIntro.Lesson5;
 
-public class LessonFive:ILesson
+public class LessonFive : ILesson
 {
     private TreeInt _tree;
     public int LessonNumber { get; set; }
     public string Descriptopn { get; set; }
 
+    /// <summary>
+    /// Иницифлизация дерева для урока
+    /// </summary>
     private void Init()
     {
         _tree = new TreeInt();
-        Random rnd = new Random();
-        
-        for (int i = 0; i < 10; i++)
-        {
-            _tree.AddItem(rnd.Next(99));
-        }
-        
+        var rnd = new Random();
+
+        for (var i = 0; i < 10; i++) _tree.AddItem(rnd.Next(99));
     }
 
     /// <summary>
@@ -28,17 +27,16 @@ public class LessonFive:ILesson
     private TreeNode<int> BFSearch(int value)
     {
         if (_tree.GetRoot() == null) return null;
-        
-        Queue<TreeNode<int>> queue = new Queue<TreeNode<int>>();
-        TreeNode<int> node = _tree.GetRoot();
+
+        var queue = new Queue<TreeNode<int>>();
+        var node = _tree.GetRoot();
         queue.Enqueue(node);
-        
+
         while (node.Data != value && queue.Count > 0)
         {
             if (node.Left != null) queue.Enqueue(node.Left);
             if (node.Right != null) queue.Enqueue(node.Right);
             node = queue.Dequeue();
-            
         }
 
         if (queue.Count == 0) return null;
@@ -54,9 +52,9 @@ public class LessonFive:ILesson
     private TreeNode<int> DFSearch(int value)
     {
         if (_tree.GetRoot() == null) return null;
-        
-        Stack<TreeNode<int>> stack = new Stack<TreeNode<int>>();
-        TreeNode<int> node = _tree.GetRoot();
+
+        var stack = new Stack<TreeNode<int>>();
+        var node = _tree.GetRoot();
         stack.Push(node);
 
         while (node.Data != value && stack.Count > 0)
@@ -64,56 +62,56 @@ public class LessonFive:ILesson
             if (node.Left != null) stack.Push(node.Left);
             if (node.Right != null) stack.Push(node.Right);
             node = stack.Pop();
-            
         }
-        return (node.Data == value? node: null);
+
+        return node.Data == value ? node : null;
     }
 
-    
+
     //Вообще вспомогательная функция
     private int GetValueFromTree(out bool found)
     {
-        TreeNode<int> node = _tree.GetRoot();
+        var node = _tree.GetRoot();
         if (node == null)
         {
             found = false;
             return -1;
         }
 
-        while (node.Right != null)
-        {
-            node = node.Right;
-        }
+        while (node.Right != null) node = node.Right;
 
         found = true;
         return node.Data;
     }
-    
+
+    /// <summary>
+    /// Основная функция урока
+    /// </summary>
     public void Run()
     {
-        Random rnd = new Random();
+        var rnd = new Random();
         Init();
         _tree.PrintTree();
-        int searchValue = rnd.Next(99);
+        var searchValue = rnd.Next(99);
         bool found;
-        int realValue = GetValueFromTree(out found);
+        var realValue = GetValueFromTree(out found);
 
         Console.WriteLine("Поиск в ширину.");
-        TreeNode<int> node = BFSearch(searchValue);
-        Console.WriteLine($"Значение {searchValue} {((node == null)?"не":"" )} найдено в дереве");
-        if (found) 
+        var node = BFSearch(searchValue);
+        Console.WriteLine($"Значение {searchValue} {(node == null ? "не" : "")} найдено в дереве");
+        if (found)
         {
             node = BFSearch(realValue);
-            Console.WriteLine($"Значение {realValue} {((node == null)?"не":"" )} найдено в дереве");
+            Console.WriteLine($"Значение {realValue} {(node == null ? "не" : "")} найдено в дереве");
         }
 
         Console.WriteLine("Поиск в глубину.");
         node = DFSearch(searchValue);
-        Console.WriteLine($"Значение {searchValue} {((node == null)?"не":"" )} найдено в дереве");
+        Console.WriteLine($"Значение {searchValue} {(node == null ? "не" : "")} найдено в дереве");
         if (found)
         {
             node = DFSearch(realValue);
-            Console.WriteLine($"Значение {realValue} {((node == null) ? "не" : "")} найдено в дереве");
+            Console.WriteLine($"Значение {realValue} {(node == null ? "не" : "")} найдено в дереве");
         }
     }
 }
