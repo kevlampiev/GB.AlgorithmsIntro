@@ -2,6 +2,7 @@
 using GeekbrainsAlgorithmsIntro.Lesson2;
 using GeekbrainsAlgorithmsIntro.Lesson3;
 using GeekbrainsAlgorithmsIntro.Lesson4;
+using GeekbrainsAlgorithmsIntro.Lesson5;
 
 namespace GeekbrainsAlgorithmsIntro;
 
@@ -43,6 +44,7 @@ public class HomeWorkMenu
         _menuList.Add(new LessonTwo(){LessonNumber =2, Descriptopn = "По уроку 2"});
         _menuList.Add(new LessonThree(){LessonNumber =3, Descriptopn = "По уроку 3"});
         _menuList.Add(new LessonFour(){LessonNumber =4, Descriptopn = "По уроку 4"});
+        _menuList.Add(new LessonFive(){LessonNumber =5, Descriptopn = "По уроку 5"});
         Init();
     }
 
