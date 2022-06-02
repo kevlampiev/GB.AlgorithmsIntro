@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace GeekbrainsAlgorithmsIntro.Lesson2
 {
-    public class LessonTwo
+    public class LessonTwo:ILesson
     {
-        public static void Run()
+        public int LessonNumber { get; set; }
+        public string Descriptopn { get; set; }
+
+        public void Run()
         {
             Console.WriteLine(@"Задача 1. Реализация типа двусвязного списка. ");
             Console.WriteLine(Environment.NewLine);

@@ -1,8 +1,11 @@
 ﻿namespace GeekbrainsAlgorithmsIntro.Lesson1
 {
-    public static class LessonOne
+    public class LessonOne:ILesson
     {
-        public static void Run()
+        public int LessonNumber { get; set; }
+        public string Descriptopn { get; set; }
+        
+        public void Run()
         {
             Console.WriteLine("Задача 1. Требуется реализовать на C# функцию согласно блок-схеме. Блок-схема описывает алгоритм проверки, простое число или нет.");
             Lesson1Task1.TestCheckIsPrime();
