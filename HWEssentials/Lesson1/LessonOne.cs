@@ -1,4 +1,6 @@
-﻿namespace GeekbrainsAlgorithmsIntro.Lesson1
+﻿using HWCommonInterfaces;
+
+namespace HWEssentials.Lesson1
 {
     public class LessonOne:ILesson
     {

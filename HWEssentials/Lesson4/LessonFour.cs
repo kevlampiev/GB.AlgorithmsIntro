@@ -1,7 +1,8 @@
 using System.Diagnostics;
 using System.Text;
+using HWCommonInterfaces;
 
-namespace GeekbrainsAlgorithmsIntro.Lesson4;
+namespace HWEssentials.Lesson4;
 
 public class LessonFour:ILesson
 {

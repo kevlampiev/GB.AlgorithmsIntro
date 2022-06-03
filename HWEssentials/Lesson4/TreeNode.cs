@@ -1,4 +1,4 @@
-namespace GeekbrainsAlgorithmsIntro.Lesson4;
+namespace HWEssentials.Lesson4;
 
 public class TreeNode<T>
 {

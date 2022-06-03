@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GeekbrainsAlgorithmsIntro.Lesson2
+namespace HWEssentials.Lesson2
 {
 
     public class Node

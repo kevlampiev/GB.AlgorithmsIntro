@@ -1,8 +1,7 @@
 using System.Diagnostics;
-using System.Threading;
-using System;
+using HWCommonInterfaces;
 
-namespace GeekbrainsAlgorithmsIntro.Lesson3;
+namespace HWEssentials.Lesson3;
 
 public class LessonThree:ILesson
 {

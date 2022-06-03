@@ -1,6 +1,7 @@
-using GeekbrainsAlgorithmsIntro.Lesson4;
+using HWEssentials.Lesson4;
+using HWCommonInterfaces;
 
-namespace GeekbrainsAlgorithmsIntro.Lesson5;
+namespace HWEssentials.Lesson5;
 
 public class LessonFive : ILesson
 {

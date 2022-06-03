@@ -1,4 +1,4 @@
-namespace GeekbrainsAlgorithmsIntro.Lesson3;
+namespace HWEssentials.Lesson3;
 
 public struct PointStructDouble
 {

@@ -1,4 +1,4 @@
-namespace GeekbrainsAlgorithmsIntro;
+namespace HWCommonInterfaces;
 
 public interface ILesson
 {

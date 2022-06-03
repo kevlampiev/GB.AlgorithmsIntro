@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using HWCommonInterfaces;
 
-namespace GeekbrainsAlgorithmsIntro.Lesson2
+namespace HWEssentials.Lesson2
 {
     public class LessonTwo:ILesson
     {

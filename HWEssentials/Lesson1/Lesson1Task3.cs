@@ -1,4 +1,4 @@
-﻿namespace GeekbrainsAlgorithmsIntro.Lesson1
+﻿namespace HWEssentials.Lesson1
 {
     public static class Lesson1Task3
     {

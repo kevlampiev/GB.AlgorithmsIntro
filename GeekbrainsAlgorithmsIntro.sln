@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekbrainsAlgorithmsIntro", "GeekbrainsAlgorithmsIntro\GeekbrainsAlgorithmsIntro.csproj", "{356E5D7A-E874-434B-8890-6B5BB5D7132A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HWEssentials", "HWEssentials\HWEssentials.csproj", "{AA6D9091-5537-4011-85C7-937E298DEEE4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HWCommonInterfaces", "HWCommonInterfaces\HWCommonInterfaces.csproj", "{F26F8FD0-563C-4677-BB5B-B5FE70BB387B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{356E5D7A-E874-434B-8890-6B5BB5D7132A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{356E5D7A-E874-434B-8890-6B5BB5D7132A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{356E5D7A-E874-434B-8890-6B5BB5D7132A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA6D9091-5537-4011-85C7-937E298DEEE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA6D9091-5537-4011-85C7-937E298DEEE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA6D9091-5537-4011-85C7-937E298DEEE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA6D9091-5537-4011-85C7-937E298DEEE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F26F8FD0-563C-4677-BB5B-B5FE70BB387B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F26F8FD0-563C-4677-BB5B-B5FE70BB387B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F26F8FD0-563C-4677-BB5B-B5FE70BB387B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F26F8FD0-563C-4677-BB5B-B5FE70BB387B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

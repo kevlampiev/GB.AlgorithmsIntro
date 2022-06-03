@@ -1,8 +1,9 @@
-﻿using GeekbrainsAlgorithmsIntro.Lesson1;
-using GeekbrainsAlgorithmsIntro.Lesson2;
-using GeekbrainsAlgorithmsIntro.Lesson3;
-using GeekbrainsAlgorithmsIntro.Lesson4;
-using GeekbrainsAlgorithmsIntro.Lesson5;
+﻿using HWEssentials.Lesson1;
+using HWEssentials.Lesson2;
+using HWEssentials.Lesson3;
+using HWEssentials.Lesson4;
+using HWEssentials.Lesson5;
+using HWCommonInterfaces;
 
 namespace GeekbrainsAlgorithmsIntro;
 
