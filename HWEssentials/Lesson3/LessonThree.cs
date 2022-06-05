@@ -7,6 +7,12 @@ public class LessonThree:ILesson
 {
     public int LessonNumber { get; set; }
     public string Descriptopn { get; set; }
+
+    public LessonThree()
+    {
+        LessonNumber = 3;
+        Descriptopn = "3";
+    }
     
     /// <summary>
     /// Инициализация массива классов

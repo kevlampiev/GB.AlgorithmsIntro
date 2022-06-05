@@ -7,6 +7,12 @@ namespace HWEssentials.Lesson2
         public int LessonNumber { get; set; }
         public string Descriptopn { get; set; }
 
+        public LessonTwo()
+        {
+            LessonNumber = 2;
+            Descriptopn = "2";
+        }
+
         public void Run()
         {
             Console.WriteLine(@"Задача 1. Реализация типа двусвязного списка. ");

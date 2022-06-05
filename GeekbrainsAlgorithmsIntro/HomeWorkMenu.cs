@@ -4,6 +4,8 @@ using HWEssentials.Lesson3;
 using HWEssentials.Lesson4;
 using HWEssentials.Lesson5;
 using HWCommonInterfaces;
+using System.Collections;
+using System.Reflection;
 
 namespace GeekbrainsAlgorithmsIntro;
 
@@ -39,13 +41,22 @@ public class HomeWorkMenu
 
     public HomeWorkMenu()
     {
+        var assembly = Assembly.LoadFile(Directory.GetCurrentDirectory() + Path.DirectorySeparatorChar + "HWEssentials.dll");
+        
+        var classesImplementingIList = assembly
+            .GetTypes()
+            .Where(type=> type.IsClass && typeof(ILesson).IsAssignableFrom(type))
+            .ToArray();
+        
         _menuIndex = 0;
         _menuList = new List<ILesson>();
-        _menuList.Add(new LessonOne(){LessonNumber =1, Descriptopn = "По уроку 1"});
-        _menuList.Add(new LessonTwo(){LessonNumber =2, Descriptopn = "По уроку 2"});
-        _menuList.Add(new LessonThree(){LessonNumber =3, Descriptopn = "По уроку 3"});
-        _menuList.Add(new LessonFour(){LessonNumber =4, Descriptopn = "По уроку 4"});
-        _menuList.Add(new LessonFive(){LessonNumber =5, Descriptopn = "По уроку 5"});
+        foreach (Type el in classesImplementingIList)
+        {
+            ILesson newPoint = (ILesson) Activator.CreateInstance(el);
+            _menuList.Add(newPoint);
+        }
+
+        _menuList = _menuList.OrderBy(x => x.LessonNumber).ToList();
         Init();
     }
 

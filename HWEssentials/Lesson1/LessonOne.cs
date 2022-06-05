@@ -6,7 +6,13 @@ namespace HWEssentials.Lesson1
     {
         public int LessonNumber { get; set; }
         public string Descriptopn { get; set; }
-        
+
+        public LessonOne()
+        {
+            LessonNumber = 1;
+            Descriptopn = "1";
+        }
+
         public void Run()
         {
             Console.WriteLine("Задача 1. Требуется реализовать на C# функцию согласно блок-схеме. Блок-схема описывает алгоритм проверки, простое число или нет.");

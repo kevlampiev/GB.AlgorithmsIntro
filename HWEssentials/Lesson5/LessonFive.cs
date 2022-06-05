@@ -9,6 +9,12 @@ public class LessonFive : ILesson
     public int LessonNumber { get; set; }
     public string Descriptopn { get; set; }
 
+    public LessonFive()
+    {
+        LessonNumber = 5;
+        Descriptopn = "5";
+    }
+
     /// <summary>
     /// Иницифлизация дерева для урока
     /// </summary>
