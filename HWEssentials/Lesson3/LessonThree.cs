@@ -1,13 +1,18 @@
 using System.Diagnostics;
-using System.Threading;
-using System;
+using HWCommonInterfaces;
 
-namespace GeekbrainsAlgorithmsIntro.Lesson3;
+namespace HWEssentials.Lesson3;
 
 public class LessonThree:ILesson
 {
     public int LessonNumber { get; set; }
     public string Descriptopn { get; set; }
+
+    public LessonThree()
+    {
+        LessonNumber = 3;
+        Descriptopn = "3";
+    }
     
     /// <summary>
     /// Инициализация массива классов

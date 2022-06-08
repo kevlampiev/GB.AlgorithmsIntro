@@ -1,4 +1,4 @@
-namespace GeekbrainsAlgorithmsIntro.Lesson3;
+namespace HWEssentials.Lesson3;
 
 /// <summary>
 /// Точка на плоскости в виде класса

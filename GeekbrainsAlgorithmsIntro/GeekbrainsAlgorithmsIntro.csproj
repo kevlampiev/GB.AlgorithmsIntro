@@ -7,4 +7,9 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\HWCommonInterfaces\HWCommonInterfaces.csproj" />
+      <ProjectReference Include="..\HWEssentials\HWEssentials.csproj" />
+    </ItemGroup>
+
 </Project>

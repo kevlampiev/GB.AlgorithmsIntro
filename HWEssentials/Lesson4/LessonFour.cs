@@ -1,14 +1,21 @@
 using System.Diagnostics;
 using System.Text;
+using HWCommonInterfaces;
 
-namespace GeekbrainsAlgorithmsIntro.Lesson4;
+namespace HWEssentials.Lesson4;
 
 public class LessonFour:ILesson
 {
     
     public int LessonNumber { get; set; }
     public string Descriptopn { get; set; }
-    
+
+    public LessonFour()
+    {
+        LessonNumber = 4;
+        Descriptopn = "4";
+    }
+
     public void DisplayStep(string description)
     {
         Console.WriteLine();

@@ -1,15 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using HWCommonInterfaces;
 
-namespace GeekbrainsAlgorithmsIntro.Lesson2
+namespace HWEssentials.Lesson2
 {
     public class LessonTwo:ILesson
     {
         public int LessonNumber { get; set; }
         public string Descriptopn { get; set; }
+
+        public LessonTwo()
+        {
+            LessonNumber = 2;
+            Descriptopn = "2";
+        }
 
         public void Run()
         {
