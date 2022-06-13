@@ -3,7 +3,7 @@ using HWCommonInterfaces;
 
 namespace HWEssentials.Lesson3;
 
-public class LessonThree:ILesson
+public class LessonThree : ILesson
 {
     public int LessonNumber { get; set; }
     public string Descriptopn { get; set; }
@@ -13,7 +13,7 @@ public class LessonThree:ILesson
         LessonNumber = 3;
         Descriptopn = "3";
     }
-    
+
     /// <summary>
     /// Инициализация массива классов
     /// </summary>

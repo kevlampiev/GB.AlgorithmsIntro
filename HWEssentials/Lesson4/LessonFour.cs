@@ -4,9 +4,8 @@ using HWCommonInterfaces;
 
 namespace HWEssentials.Lesson4;
 
-public class LessonFour:ILesson
+public class LessonFour : ILesson
 {
-    
     public int LessonNumber { get; set; }
     public string Descriptopn { get; set; }
 
@@ -120,6 +119,4 @@ public class LessonFour:ILesson
         DisplayStep("Задание 2. Работа с HashSet");
         TryHash();
     }
-
-
 }

@@ -3,13 +3,12 @@ using HWEssentials.Lesson4;
 
 namespace HWEssentials.Lesson6;
 
-public class LessonSix:ILesson
+public class LessonSix : ILesson
 {
- 
     private TreeInt _tree;
     public int LessonNumber { get; set; }
     public string Descriptopn { get; set; }
-    
+
 //Вообще вспомогательная функция
     private int GetValueFromTree(out bool found)
     {
@@ -30,10 +29,10 @@ public class LessonSix:ILesson
     {
         LessonNumber = 6;
         Descriptopn = "6";
-        
+
         Init();
     }
-    
+
     /// <summary>
     /// Иницифлизация дерева для урока
     /// </summary>
@@ -44,14 +43,14 @@ public class LessonSix:ILesson
 
         for (var i = 0; i < 7; i++) _tree.AddItem(rnd.Next(99));
     }
-   
+
     /// <summary>
     /// Основная функция урока
     /// </summary>
     public void Run()
     {
         var rnd = new Random();
-        
+
         _tree.PrintTree();
         var searchValue = rnd.Next(99);
         bool found;

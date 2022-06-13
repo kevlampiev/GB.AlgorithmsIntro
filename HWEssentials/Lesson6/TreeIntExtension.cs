@@ -4,8 +4,6 @@ namespace HWEssentials.Lesson6;
 
 public static class TreeIntExtension
 {
-    
-    
     public static TreeNode<int> BFSearch(this TreeInt _tree, int value)
     {
         if (_tree.GetRoot() == null) return null;
@@ -24,7 +22,7 @@ public static class TreeIntExtension
         if (queue.Count == 0) return null;
         else return node;
     }
-    
+
     public static TreeNode<int> DFSearch(this TreeInt _tree, int value)
     {
         if (_tree.GetRoot() == null) return null;
@@ -42,5 +40,4 @@ public static class TreeIntExtension
 
         return node.Data == value ? node : null;
     }
-    
 }
