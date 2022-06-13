@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\HWCommonInterfaces\HWCommonInterfaces.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="Lesson4\Vector.cs" />
+      <Compile Remove="Class1.cs" />
+    </ItemGroup>
+
+</Project>
