@@ -7,12 +7,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\HWCommonInterfaces\HWCommonInterfaces.csproj"/>
+        <ProjectReference Include="..\HWCommonInterfaces\HWCommonInterfaces.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-        <Compile Remove="Lesson4\Vector.cs"/>
-        <Compile Remove="Class1.cs"/>
+        <Compile Remove="Lesson4\Vector.cs" />
+        <Compile Remove="Class1.cs" />
     </ItemGroup>
 
 </Project>

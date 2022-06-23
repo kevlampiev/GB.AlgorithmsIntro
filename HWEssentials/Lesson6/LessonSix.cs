@@ -9,7 +9,7 @@ public class LessonSix : ILesson
     public int LessonNumber { get; set; }
     public string Descriptopn { get; set; }
 
-//Вообще вспомогательная функция
+    //Вообще вспомогательная функция
     private int GetValueFromTree(out bool found)
     {
         var node = _tree.GetRoot();
