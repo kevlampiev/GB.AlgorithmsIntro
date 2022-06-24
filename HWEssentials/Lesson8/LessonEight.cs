@@ -9,7 +9,7 @@ namespace HWEssentials.Lesson8
 {
     internal class LessonEight : ILesson
     {
-        
+
         // Границы диапаона
         private int _lowBorder = 0;
         private int _highBorder = 10;
@@ -23,7 +23,7 @@ namespace HWEssentials.Lesson8
         /// Свойства границы диапазона
         /// </summary>
         public int LowBorder { get => _lowBorder; set { SetLowerBorder(value); } }
-        public int HighBorder { get => _highBorder; set { SetUpperBorder(value); }  }
+        public int HighBorder { get => _highBorder; set { SetUpperBorder(value); } }
 
         /// <summary>
         /// Свойство Количество элементов массива
@@ -65,15 +65,15 @@ namespace HWEssentials.Lesson8
 
 
         //Вспомогательная функция ввода целого
-        private int GetIntFromKeyboard(string prompt) 
+        private int GetIntFromKeyboard(string prompt)
         {
             Console.Write(prompt + ": ");
             bool success = int.TryParse(Console.ReadLine(), out int result);
             if (success) return result;
-            else 
+            else
             {
                 Console.WriteLine("Введено что-то непонятное, введенное значение будет преобразовано к нулю.");
-                return 0; 
+                return 0;
             }
         }
 
@@ -81,45 +81,45 @@ namespace HWEssentials.Lesson8
         /// <summary>
         /// Запрашивает ввод с клавиатуры значений верхней и нижней границы диапазона и кол-ва элементов
         /// </summary>
-        public void GetParams() 
+        public void GetParams()
         {
             Console.WriteLine();
             LowBorder = GetIntFromKeyboard($"Введите минимально возможную нижнюю границу диапазона");
             HighBorder = GetIntFromKeyboard("Введите максимально возможную верхнюю границу диапазона");
             ElementsCount = GetIntFromKeyboard("Введите количество элементов массива для генерации");
         }
-        
+
         // Вспомогательная функция генерации массива
-        private void InitArray() 
+        private void InitArray()
         {
             Random rnd = new Random();
             int[] newArray = new int[ElementsCount];
 
-            for (int i = 0; i < newArray.Length; i++) 
-            { 
+            for (int i = 0; i < newArray.Length; i++)
+            {
                 newArray[i] = rnd.Next(LowBorder, HighBorder);
             }
             _intArray = newArray;
         }
 
         //Вывод без затей
-        private void displayArray() 
+        private void displayArray()
         {
             Console.WriteLine();
-            for (int i = 0; i < _intArray.Length; i++) 
+            for (int i = 0; i < _intArray.Length; i++)
             {
-                Console.Write(" "+_intArray[i]+" ");
+                Console.Write(" " + _intArray[i] + " ");
             }
             Console.WriteLine();
         }
 
         private void SortArray()
         {
-            int[] countingArray = new int[HighBorder-LowBorder+1];
+            int[] countingArray = new int[HighBorder - LowBorder + 1];
             //Не уверен, что это необходимо, но на всякий случай
             Array.Clear(countingArray);
 
-            for (int i = 0; i < _intArray.Length; i++) 
+            for (int i = 0; i < _intArray.Length; i++)
             {
                 int index = _intArray[i] - LowBorder;
                 countingArray[index]++;
@@ -128,10 +128,10 @@ namespace HWEssentials.Lesson8
             //разворачиваем обратно
             Array.Clear(_intArray);
             int currentIndex = 0; //индекс в отсортированном массиве
-            for (int i = 0; i < countingArray.Length; i++) 
+            for (int i = 0; i < countingArray.Length; i++)
             {
-                for (int j = 0; j < countingArray[i]; j++) 
-                { 
+                for (int j = 0; j < countingArray[i]; j++)
+                {
                     _intArray[currentIndex++] = i + LowBorder;
                 }
             }
@@ -139,7 +139,7 @@ namespace HWEssentials.Lesson8
         }
 
         //Вспомогательная функция:гоняет процесс инициализация-сортировка-отображение
-        private void DisplaySortingProcess() 
+        private void DisplaySortingProcess()
         {
             InitArray();
             Console.WriteLine($"Исходный массив из {_elementsCount} элементов с диапаоном значений [{LowBorder} - {HighBorder}]:");
@@ -161,11 +161,12 @@ namespace HWEssentials.Lesson8
         public void Run()
         {
             ConsoleKeyInfo commandKey = new ConsoleKeyInfo();
-            do { 
+            do
+            {
                 DisplaySortingProcess();
                 Console.WriteLine("Для задания новых параметров для инициализации массива нажмите клавишу <o>, любую другую - для выхода");
                 commandKey = Console.ReadKey();
-                if (commandKey.Key == ConsoleKey.O) 
+                if (commandKey.Key == ConsoleKey.O)
                 {
                     GetParams();
                 }
